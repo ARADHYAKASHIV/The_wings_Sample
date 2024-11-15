@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members - Tech Innovators Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles from index.html */
+        :root {
+            --primary: #002B5B;
+            --secondary: #F5F5F5;
+            --accent1: #FF6F00;
+            --accent2: #00BFA5;
+            --text-dark: #333333;
+            --text-light: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--secondary);
+        }
+
+        /* Navbar styles (same as other pages) */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            background: rgba(0, 43, 91, 0.8);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar:hover {
+            background: rgba(0, 43, 91, 0.95);
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        .logo {
+            position: relative;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(45deg, var(--accent1), var(--accent2));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--accent1), var(--accent2));
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .nav-links a:hover::before {
+            left: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent1);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Members Page Specific Styles */
+        .team-banner {
+            height: 50vh;
+            background: linear-gradient(rgba(0, 43, 91, 0.8), rgba(0, 43, 91, 0.8)),
+                        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle, transparent 20%, rgba(0, 43, 91, 0.8) 20%, rgba(0, 43, 91, 0.8) 22%, transparent 22%);
+            background-size: 20px 20px;
+            animation: backgroundMove 30s linear infinite;
+        }
+
+        .team-banner h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .core-team {
+            padding: 4rem 5%;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .member-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 400px;
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .member-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .card-back {
+            background: var(--primary);
+            color: var(--text-light);
+            transform: rotateY(180deg);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .member-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--accent2);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent1);
+            transform: translateY(-3px);
+        }
+
+        .member-spotlight {
+            padding: 4rem 5%;
+            background: white;
+        }
+
+        .spotlight-carousel {
+            overflow-x: auto;
+            padding: 2rem 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .spotlight-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .spotlight-container {
+            display: flex;
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .spotlight-card {
+            min-width: 300px;
+            background: var(--secondary);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .team-banner h1 {
+                font-size: 2.5rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .member-card {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Tech Innovators</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="members.html">Members</a>
+            <a href="join.html">Join Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="team-banner">
+        <div class="banner-content">
+            <h1>Meet Our Team</h1>
+            <p>The passionate individuals driving innovation forward</p>
+        </div>
+    </section>
+
+    <section class="core-team">
+        <h2>Core Team Members</h2>
+        <div class="team-grid">
+            <!-- Core Team Member Cards -->
+            <div class="member-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="John Doe" class="member-image">
+                        <div class="member-info">
+                            <h3 class="member-name">John Doe</h3>
+                            <p class="member-role">Club President</p>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-linkedin"></i></a>
+                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <h3>About John</h3>
+                        <p>Senior Computer Science major with a passion for AI and machine learning. Leading the club's initiatives in technological innovation.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more member cards -->
+        </div>
+    </section>
+
+    <section class="member-spotlight">
+        <h2>Member Spotlights</h2>
+        <div class="spotlight-carousel">
+            <div class="spotlight-container">
+                <!-- Spotlight Cards -->
+                <div class="spotlight-card">
+                    <h3>Project Highlight</h3>
+                    <p>Amazing AI project by Sarah Smith</p>
+                    <a href="#" class="read-more">Read More</a>
+                </div>
+                <!-- Add more spotlight cards -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html> 

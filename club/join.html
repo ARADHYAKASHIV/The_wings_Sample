@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - Tech Innovators Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/join.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Tech Innovators</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="members.html">Members</a>
+            <a href="join.html">Join Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <section class="join-banner">
+        <div class="banner-content">
+            <h1>Become a Member</h1>
+            <p>Join our community of tech enthusiasts and innovators</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="signup-section">
+            <h2>Sign Up Form</h2>
+            <form class="signup-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="major">Major</label>
+                        <input type="text" id="major" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Year</label>
+                        <select id="year" required>
+                            <option value="">Select Year</option>
+                            <option value="freshman">Freshman</option>
+                            <option value="sophomore">Sophomore</option>
+                            <option value="junior">Junior</option>
+                            <option value="senior">Senior</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="interests">Areas of Interest</label>
+                        <textarea id="interests" rows="3" placeholder="Tell us about your tech interests..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="submit-btn">Submit Application</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section class="benefits-section">
+            <h2>Why Join Us?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-network-wired benefit-icon"></i>
+                    <h3 class="benefit-title">Networking</h3>
+                    <p>Connect with like-minded individuals and industry professionals</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-laptop-code benefit-icon"></i>
+                    <h3 class="benefit-title">Skill Development</h3>
+                    <p>Learn new technologies through workshops and projects</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-users benefit-icon"></i>
+                    <h3 class="benefit-title">Community</h3>
+                    <p>Be part of a supportive tech community</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are the membership requirements?</h3>
+                        <span class="toggle-icon">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Any student with an interest in technology can join. No prior experience required!</p>
+                    </div>
+                </div>
+                <!-- Add more FAQ items as needed -->
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Form submission
+        document.querySelector('.signup-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your form submission logic here
+            alert('Thank you for your application! We will contact you soon.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html> 

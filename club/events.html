@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Tech Innovators Club</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/pages.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Tech Innovators</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="events.html">Events</a>
+            <a href="members.html">Members</a>
+            <a href="join.html">Join Us</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <div class="events-banner">
+        <div class="banner-content">
+            <h1>Our Events</h1>
+            <p>Join us for exciting tech events and workshops</p>
+        </div>
+    </div>
+
+    <div class="filter-container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Events</button>
+            <button class="filter-btn" data-filter="workshop">Workshops</button>
+            <button class="filter-btn" data-filter="hackathon">Hackathons</button>
+            <button class="filter-btn" data-filter="networking">Networking</button>
+        </div>
+    </div>
+
+    <section class="events-container">
+        <div class="section-title">
+            <h2>Upcoming Events</h2>
+        </div>
+        <div class="events-grid">
+            <!-- Event cards will be dynamically populated -->
+        </div>
+    </section>
+
+    <section class="past-events">
+        <div class="section-title">
+            <h2>Past Events Gallery</h2>
+        </div>
+        <div class="gallery-grid">
+            <!-- Gallery items will be dynamically populated -->
+        </div>
+    </section>
+
+    <!-- Modal for event details -->
+    <div class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <!-- Modal content will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Sample event data
+        const events = [
+            {
+                title: "Spring Hackathon 2024",
+                date: "March 15-16, 2024",
+                description: "24-hour coding challenge with amazing prizes",
+                image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87",
+                category: "hackathon"
+            },
+            {
+                title: "AI Workshop Series",
+                date: "March 22, 2024",
+                description: "Learn about the latest developments in artificial intelligence",
+                image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2",
+                category: "workshop"
+            },
+            {
+                title: "Tech Mixer",
+                date: "April 5, 2024",
+                description: "Network with industry professionals and fellow tech enthusiasts",
+                image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b",
+                category: "networking"
+            }
+        ];
+
+        // Populate events grid
+        function populateEvents() {
+            const eventsGrid = document.querySelector('.events-grid');
+            eventsGrid.innerHTML = ''; // Clear existing content
+            
+            events.forEach(event => {
+                const eventCard = `
+                    <div class="event-card" data-category="${event.category}">
+                        <img src="${event.image}" alt="${event.title}" class="event-image">
+                        <div class="event-details">
+                            <div class="event-date">${event.date}</div>
+                            <h3 class="event-title">${event.title}</h3>
+                            <p class="event-description">${event.description}</p>
+                            <a href="#" class="cta-button">RSVP Now</a>
+                        </div>
+                    </div>
+                `;
+                eventsGrid.innerHTML += eventCard;
+            });
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const filter = button.dataset.filter;
+                
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                button.classList.add('active');
+
+                // Filter events
+                document.querySelectorAll('.event-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Initialize
+        populateEvents();
+
+        // Sample past events data
+        const pastEvents = [
+            {
+                image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87',
+                title: 'Hackathon 2023',
+                description: 'Our annual hackathon brought together over 200 participants.'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2',
+                title: 'Web Dev Workshop',
+                description: 'Learning modern web development techniques.'
+            },
+            {
+                image: 'https://images.unsplash.com/photo-1515187029135-18ee286d815b',
+                title: 'Tech Meetup',
+                description: 'Networking event with industry leaders.'
+            }
+        ];
+
+        // Populate past events gallery
+        function populatePastEvents() {
+            const galleryGrid = document.querySelector('.gallery-grid');
+            galleryGrid.innerHTML = ''; // Clear existing content
+            
+            pastEvents.forEach(event => {
+                const galleryItem = `
+                    <div class="gallery-item">
+                        <img src="${event.image}" alt="${event.title}">
+                        <div class="gallery-overlay">
+                            <h3>${event.title}</h3>
+                            <p>${event.description}</p>
+                        </div>
+                    </div>
+                `;
+                galleryGrid.innerHTML += galleryItem;
+            });
+        }
+
+        // Initialize gallery
+        populatePastEvents();
+    </script>
+</body>
+</html> 
