@@ -1,0 +1,351 @@
+/* Home Page Styles */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 43, 91, 0.8), rgba(0, 43, 91, 0.8)),
+                url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    padding: 0 5%;
+}
+
+.hero-content {
+    max-width: 800px;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Events Page Styles */
+.events-banner {
+    height: 50vh;
+    margin-top: 100px;
+    padding-top: 60px;
+    background: linear-gradient(135deg, var(--primary), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 2;
+}
+
+.banner-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.filter-container {
+    padding: 2rem 5%;
+    background: var(--secondary);
+    position: sticky;
+    top: 100px;
+    z-index: 90;
+    margin-bottom: 2rem;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-btn {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, var(--primary), var(--accent2));
+    border: none;
+    padding: 0.8rem 2rem;
+    color: var(--text-light);
+    font-weight: 600;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    z-index: -1;
+    background: linear-gradient(45deg, var(--accent1), var(--accent2), var(--primary));
+    border-radius: 25px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover::before {
+    opacity: 1;
+}
+
+.filter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.events-container {
+    padding: 3rem 5%;
+    margin-top: 2rem;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.event-card:hover::before {
+    transform: translateX(100%);
+}
+
+.event-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.event-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.event-details {
+    padding: 1.5rem;
+}
+
+.event-date {
+    color: var(--accent2);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.event-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+}
+
+.event-description {
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+.past-events {
+    padding: 3rem 5%;
+    margin-top: 2rem;
+    background: var(--secondary);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 43, 91, 0.9);
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+    bottom: 0;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1100;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+/* Enhanced Section Titles */
+.section-title {
+    position: relative;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    position: relative;
+    display: inline-block;
+    color: var(--primary);
+    font-size: 2.5rem;
+    padding-bottom: 10px;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(45deg, var(--accent1), var(--accent2));
+    border-radius: 3px;
+}
+
+/* Contact Page Styles */
+.contact-container {
+    max-width: 1200px;
+    margin: 120px auto 2rem;
+    padding: 0 20px;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+/* Join Page Styles */
+.join-banner {
+    height: 50vh;
+    background: linear-gradient(rgba(0, 43, 91, 0.8), rgba(0, 43, 91, 0.8)),
+                url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Members Page Styles */
+.team-banner {
+    height: 50vh;
+    background: linear-gradient(rgba(0, 43, 91, 0.8), rgba(0, 43, 91, 0.8)),
+                url('https://images.unsplash.com/photo-1522071820081-009f0129c71c') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Mobile Responsiveness for Events Page */
+@media (max-width: 768px) {
+    .events-banner {
+        height: 40vh;
+        margin-top: 80px;
+        padding-top: 40px;
+    }
+
+    .banner-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .filter-container {
+        top: 80px;
+        padding: 1rem;
+    }
+
+    .events-container,
+    .past-events {
+        padding: 2rem 1rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+} 
