@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+  
+  /* Add smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Add perspective for 3D effects */
+  .perspective {
+    perspective: 2000px;
+    transform-style: preserve-3d;
+  }
+  
+  /* Add glass effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Add glow effects */
+  .glow {
+    box-shadow: 0 0 15px rgba(66, 153, 225, 0.5);
+  }
+  
+  .glow-text {
+    text-shadow: 0 0 10px rgba(66, 153, 225, 0.5);
+  } 
