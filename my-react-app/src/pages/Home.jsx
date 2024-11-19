@@ -1,6 +1,80 @@
 import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import ImageCarousel from '../components/ImageCarousel';
+
+const carouselImages = [
+  {
+    url: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3",
+    alt: "Innovation Hub",
+    title: "Welcome to Our Innovation Hub",
+    description: "Where ideas take flight and innovation knows no bounds",
+    tags: ["Technology", "Innovation", "Community"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3",
+    alt: "Collaborative Space",
+    title: "Build Together, Grow Together",
+    description: "Join our community of passionate developers and creators",
+    tags: ["Collaboration", "Development", "Growth"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3",
+    alt: "Tech Workshop",
+    title: "Learn from the Best",
+    description: "Hands-on workshops and mentorship from industry experts",
+    tags: ["Learning", "Workshops", "Mentorship"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3",
+    alt: "Team Meeting",
+    title: "Collaborative Excellence",
+    description: "Work with diverse teams on cutting-edge projects",
+    tags: ["Teamwork", "Innovation", "Projects"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1531498860502-7c67cf02f657?ixlib=rb-4.0.3",
+    alt: "Tech Event",
+    title: "Inspiring Events",
+    description: "Regular meetups and networking opportunities",
+    tags: ["Events", "Networking", "Community"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3",
+    alt: "Digital Innovation",
+    title: "Cutting-Edge Technology",
+    description: "Access to the latest tools and technologies",
+    tags: ["Technology", "Innovation", "Digital"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3",
+    alt: "Workspace",
+    title: "Modern Workspace",
+    description: "State-of-the-art facilities for optimal productivity",
+    tags: ["Workspace", "Facilities", "Productivity"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3",
+    alt: "AI Development",
+    title: "AI & Machine Learning",
+    description: "Explore the frontiers of artificial intelligence",
+    tags: ["AI", "Machine Learning", "Future"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3",
+    alt: "Code Review",
+    title: "Code Excellence",
+    description: "Best practices and professional code reviews",
+    tags: ["Coding", "Reviews", "Quality"]
+  },
+  {
+    url: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3",
+    alt: "Business Growth",
+    title: "Scale Your Ideas",
+    description: "Transform your vision into successful projects",
+    tags: ["Growth", "Success", "Vision"]
+  }
+];
 
 function Home() {
   const [isVisible, setIsVisible] = useState(false);
@@ -84,6 +158,45 @@ function Home() {
             </motion.div>
           </div>
         </section>
+
+        {/* Add this new section after the hero section */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="py-20"
+        >
+          <div className="container mx-auto px-4">
+            <div className="max-w-7xl mx-auto">
+              <motion.div
+                variants={fadeInUp}
+                className="mb-12 text-center"
+              >
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400">
+                  Discover Our World
+                </h2>
+                <p className="text-xl text-blue-100 max-w-3xl mx-auto">
+                  Take a journey through our innovative spaces and vibrant community
+                </p>
+              </motion.div>
+              
+              <motion.div
+                variants={fadeInUp}
+                className="relative"
+              >
+                {/* Decorative elements */}
+                <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse"></div>
+                
+                {/* Carousel */}
+                <div className="relative backdrop-blur-sm bg-white/5 p-2 rounded-2xl border border-white/10">
+                  <ImageCarousel images={carouselImages} />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </motion.section>
 
         {/* Features Section */}
         <motion.section 
