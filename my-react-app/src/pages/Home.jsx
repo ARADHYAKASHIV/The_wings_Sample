@@ -147,8 +147,8 @@ function Home() {
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto text-center">
               {[
-                { number: "500+", label: "Active Members", gradient: "from-blue-400 to-cyan-400" },
-                { number: "50+", label: "Weekly Events", gradient: "from-purple-400 to-pink-400" },
+                { number: "800+", label: "Active Members", gradient: "from-blue-400 to-cyan-400" },
+                { number: "50+", label: "Events", gradient: "from-purple-400 to-pink-400" },
                 { number: "20+", label: "Tech Projects", gradient: "from-orange-400 to-red-400" },
                 { number: "100%", label: "Success Rate", gradient: "from-green-400 to-emerald-400" }
               ].map((stat, index) => (
